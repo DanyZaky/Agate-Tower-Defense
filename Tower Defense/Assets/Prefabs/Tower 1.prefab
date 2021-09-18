@@ -12,6 +12,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _shootPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _shootDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _towerPlace
+      value: 
+      objectReference: {fileID: 6391871872863179640}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _towerHead
+      value: 
+      objectReference: {fileID: 3996699009044834916}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 6763536937982820917, guid: ef1705f1d38582045be5e91db6a182e6,
+        type: 3}
     - target: {fileID: 2823587153974723942, guid: 7b085a6ee58abeb44b78b1337849ed3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,26 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _shootPower
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _shootDelay
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _towerPlace
-      value: 
-      objectReference: {fileID: 6391871872863179640}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _towerHead
-      value: 
-      objectReference: {fileID: 3996699009044834916}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b085a6ee58abeb44b78b1337849ed3e, type: 3}
 --- !u!212 &6391871872863179640 stripped

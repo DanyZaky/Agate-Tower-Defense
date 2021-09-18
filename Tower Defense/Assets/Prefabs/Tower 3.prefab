@@ -12,6 +12,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _shootDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _bulletSplashRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _towerPlace
+      value: 
+      objectReference: {fileID: 1970869913464294487}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _towerHead
+      value: 
+      objectReference: {fileID: 8402224549719749963}
+    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 2421977794930436955, guid: ae5825159d27cc84a80f0c37f9d7e777,
+        type: 3}
     - target: {fileID: 2823587153974723942, guid: 7b085a6ee58abeb44b78b1337849ed3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,26 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _shootDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _bulletSplashRadius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _towerPlace
-      value: 
-      objectReference: {fileID: 1970869913464294487}
-    - target: {fileID: 6603193705155019159, guid: 7b085a6ee58abeb44b78b1337849ed3e,
-        type: 3}
-      propertyPath: _towerHead
-      value: 
-      objectReference: {fileID: 8402224549719749963}
     - target: {fileID: 4730136438516723416, guid: 7b085a6ee58abeb44b78b1337849ed3e,
         type: 3}
       propertyPath: m_Sprite
