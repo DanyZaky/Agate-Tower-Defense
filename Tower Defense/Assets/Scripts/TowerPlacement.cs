@@ -9,29 +9,32 @@ public class TowerPlacement : MonoBehaviour
     // Fungsi yang terpanggil sekali ketika ada object Rigidbody yang menyentuh area collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_placedTower != null)
+        if (_placedTower != null && _placedTower.isPlaced && !_placedTower.gameObject.activeSelf)
         {
-            return;
+            _placedTower = null;
         }
 
-        Tower tower = collision.GetComponent<Tower>();
-        if (tower != null)
+        if (_placedTower == null)
         {
-            tower.SetPlacePosition(transform.position);
-            _placedTower = tower;
+            Tower tower = collision.GetComponent<Tower>();
+            if (tower != null)
+            {
+                tower.SetPlacePosition(transform.position);
+                _placedTower = tower;
+            }
         }
     }
 
     // Kebalikan dari OnTriggerEnter2D, fungsi ini terpanggil sekali ketika object tersebut meninggalkan area collider
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_placedTower == null)
-        {
-            return;
-        }
+        if (_placedTower == null) return;
 
-        _placedTower.SetPlacePosition(null);
-        _placedTower = null;
+        if (!_placedTower.isPlaced)
+        {
+            _placedTower.SetPlacePosition(null);
+            _placedTower = null;
+        }
 
     }
 }

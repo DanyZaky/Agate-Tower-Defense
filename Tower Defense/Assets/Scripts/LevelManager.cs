@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     public bool IsOver { get; private set; }
 
     [SerializeField] private int _maxLives = 3;
-    [SerializeField] private int _totalEnemy = 15;
+    public int _totalEnemy = 15;
 
     [SerializeField] private GameObject _panel;
     [SerializeField] private Text _statusInfo;
@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
     private List<Bullet> _spawnedBullets = new List<Bullet>();
 
     private int _currentLives;
-    private int _enemyCounter;
+    public int _enemyCounter;
     private float _runningSpawnDelay;
 
     private void Start()
@@ -106,6 +106,7 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
+                    ReduceLives(1);
                     enemy.gameObject.SetActive(false);
                 }
             }
@@ -229,7 +230,7 @@ public class LevelManager : MonoBehaviour
     {
         IsOver = true;
 
-        _statusInfo.text = isWin ? "You Win!" : "You Lose!";
+        _statusInfo.text = isWin ? "You Win!\nPress [R] to Restart" : "You Lose!\nPress [R] to Restart";
         _panel.gameObject.SetActive(true);
     }
 

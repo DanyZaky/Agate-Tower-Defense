@@ -23,6 +23,33 @@ public class Tower : MonoBehaviour
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
 
+    public bool isPlaced { get; private set; }
+    
+    //Healthbar Tower
+    private float _currentTowerHealth;
+    [SerializeField] private float _maxHealth = 1;
+    [SerializeField] private SpriteRenderer _healthBar;
+    [SerializeField] private SpriteRenderer _healthFill;
+    [SerializeField] private float cooldownDuration;
+    private bool isShooting = false;
+
+    private void Start()
+    {
+        _currentTowerHealth = _maxHealth;
+        _healthFill.size = _healthBar.size;
+    }
+
+
+    private void Update()
+    {
+        ReduceTowerHealth();
+    }
+
+    private void OnEnable()
+    {
+        
+    }
+
     // Mengecek musuh terdekat
     public void CheckNearestEnemy(List<Enemy> enemies)
     {
@@ -62,28 +89,32 @@ public class Tower : MonoBehaviour
 
     public void ShootTarget()
     {
-        if (_targetEnemy == null)
+        if (isShooting == true)
         {
-            return;
-        }
-
-        _runningShootDelay -= Time.unscaledDeltaTime;
-        if (_runningShootDelay <= 0f)
-        {
-            bool headHasAimed = Mathf.Abs(_towerHead.transform.rotation.eulerAngles.z - _targetRotation.eulerAngles.z) < 10f;
-            if (!headHasAimed)
+            if (_targetEnemy == null)
             {
                 return;
             }
 
-            Bullet bullet = LevelManager.Instance.GetBulletFromPool(_bulletPrefab);
-            bullet.transform.position = transform.position;
-            bullet.SetProperties(_shootPower, _bulletSpeed, _bulletSplashRadius);
-            bullet.SetTargetEnemy(_targetEnemy);
-            bullet.gameObject.SetActive(true);
+            _runningShootDelay -= Time.unscaledDeltaTime;
+            if (_runningShootDelay <= 0f)
+            {
+                bool headHasAimed = Mathf.Abs(_towerHead.transform.rotation.eulerAngles.z - _targetRotation.eulerAngles.z) < 10f;
+                if (!headHasAimed)
+                {
+                    return;
+                }
 
-            _runningShootDelay = _shootDelay;
+                Bullet bullet = LevelManager.Instance.GetBulletFromPool(_bulletPrefab);
+                bullet.transform.position = transform.position;
+                bullet.SetProperties(_shootPower, _bulletSpeed, _bulletSplashRadius);
+                bullet.SetTargetEnemy(_targetEnemy);
+                bullet.gameObject.SetActive(true);
+
+                _runningShootDelay = _shootDelay;
+            }
         }
+        
     }
 
     // Membuat tower selalu melihat ke arah musuh
@@ -104,6 +135,8 @@ public class Tower : MonoBehaviour
     public void LockPlacement()
     {
         transform.position = (Vector2)PlacePosition;
+        isPlaced = true;
+        isShooting = true;
     }
 
     // Mengubah order in layer pada tower yang sedang di drag
@@ -123,5 +156,24 @@ public class Tower : MonoBehaviour
     public void SetPlacePosition(Vector2? newPosition)
     {
         PlacePosition = newPosition;
+    }
+
+    public void ReduceTowerHealth()
+    {
+        if (isPlaced == true)
+        {
+            _currentTowerHealth -= cooldownDuration*Time.deltaTime;
+        }
+
+        if (_currentTowerHealth <= 0)
+        {
+            _currentTowerHealth = 0;
+            gameObject.SetActive(false);
+            isShooting = false;
+            AudioPlayer.Instance.PlaySFX("destroy");
+        }
+
+        float healthPercentage = (float)_currentTowerHealth / _maxHealth;
+        _healthFill.size = new Vector2(healthPercentage * _healthBar.size.x, _healthBar.size.y);
     }
 }

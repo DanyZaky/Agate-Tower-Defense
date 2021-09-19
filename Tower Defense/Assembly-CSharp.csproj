@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Tower.cs" />
     <Compile Include="Assets\Scripts\TowerPlacement.cs" />
     <Compile Include="Assets\Scripts\TowerUI.cs" />
+    <Compile Include="Assets\Scripts\UnlockTowerManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Z:/Github Repo/Agate-Tower-Defense/Tower Defense/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
